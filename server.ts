@@ -122,7 +122,7 @@ Provide friendly, actionable, factual climate advice, keeping in mind IPCC and E
 Use markdown (bold text, bullet points) to format your response nicely. Don't be overly verbose. Be highly practical, encouraging, and clear.`;
 
     const response = await generateContentWithRetry(aiClient, {
-      model: "gemini-3.5-flash",
+      model: "gemini-2.5-flash",
       contents: message,
       config: {
         systemInstruction,
