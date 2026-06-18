@@ -1,0 +1,6 @@
+{
+  "name": "ZeroCarbon",
+  "description": "An interactive, elegant, full-stack platform to calculate, track, and reduce your daily carbon footprint with support from a server-side Gemini climate coach.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
