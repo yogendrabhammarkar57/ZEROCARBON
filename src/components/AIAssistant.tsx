@@ -135,22 +135,22 @@ export default function AIAssistant({ userProfile, calculatedFootprint, savedCO2
       </div>
 
       {apiError && (
-        <div className="bg-amber-50 text-amber-800 px-4 py-2.5 text-xs flex items-center gap-2 border-b border-amber-100 font-semibold">
-          <AlertCircle className="w-4 h-4 shrink-0 text-amber-600" />
-          <span>Local advisory active: {apiError}.</span>
+        <div className="bg-amber-50 text-amber-800 px-4 py-3 text-xs flex flex-col gap-1.5 border-b border-amber-100 font-semibold leading-relaxed">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-amber-600" />
+            <span className="text-amber-900">
+              {apiError.includes("404")
+                ? "Local Smart Fallback Advisor Active"
+                : `Local advisory active: ${apiError}`}
+            </span>
+          </div>
+          {apiError.includes("404") && (
+            <p className="text-[10px] text-amber-700 font-medium pl-6 leading-relaxed">
+              Netlify is a static-only web host and does not run the backend Node/Express server. The AI has gracefully activated its local offline-simulation engine. For a live Google Gemini AI connection, please access the app from your AI Preview, or deploy it on full-stack capable platforms like Cloud Run or Render.
+            </p>
+          )}
         </div>
       )}
-
-      {/* Messages Window */}
-      <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50">
-        {messages.map((m, idx) => (
-          <div key={idx} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-            <div
-              className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs leading-relaxed whitespace-pre-line shadow-sm border ${
-                m.role === 'user'
-                  ? 'bg-emerald-600 text-white border-emerald-600 rounded-tr-none font-medium'
-                  : 'bg-white text-slate-800 border-slate-100 rounded-tl-none font-medium'
-              }`}
             >
               {m.content}
             </div>
