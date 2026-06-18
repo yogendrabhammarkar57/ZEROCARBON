@@ -151,6 +151,17 @@ export default function AIAssistant({ userProfile, calculatedFootprint, savedCO2
           )}
         </div>
       )}
+
+      {/* Messages Window */}
+      <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50">
+        {messages.map((m, idx) => (
+          <div key={idx} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+            <div
+              className={`max-w-[85%] rounded-2xl px-4 py-3 text-xs leading-relaxed whitespace-pre-line shadow-sm border ${
+                m.role === 'user'
+                  ? 'bg-emerald-600 text-white border-emerald-600 rounded-tr-none font-medium'
+                  : 'bg-white text-slate-800 border-slate-100 rounded-tl-none font-medium'
+              }`}
             >
               {m.content}
             </div>
